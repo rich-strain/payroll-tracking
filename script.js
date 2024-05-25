@@ -17,21 +17,25 @@ const collectEmployees = function () {
 
     // pushes entire employee object to employees array
     employees.push(employee);
-    console.log(employees);
     addEmployee = confirm(
       "Would you like to submit payroll for another employee?"
     );
   }
+  return employees;
 };
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
+  console.log("displayAverageSalary() called");
 };
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
+  const randomIndex = Math.floor(Math.random() * employeesArray.length);
+
+  console.log("Random index ", randomIndex);
 };
 
 /*
