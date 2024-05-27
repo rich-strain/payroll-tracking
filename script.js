@@ -13,7 +13,10 @@ const collectEmployees = function () {
     // creates values in employee object using dot notation
     employee.firstName = prompt("Please enter the employee's first name:");
     employee.lastName = prompt("Please enter the employees last name");
-    employee.salary = prompt("Please enter the employees salary");
+    employee.salary = Number(prompt("Please enter the employees salary"));
+    if (isNaN(employee.salary)) {
+      employee.salary = 0;
+    }
 
     // pushes entire employee object to employees array
     employees.push(employee);
@@ -27,7 +30,19 @@ const collectEmployees = function () {
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
-  console.log("displayAverageSalary() called");
+
+  const totalSalary = employeesArray.reduce(function (
+    accumulator,
+    currentEmployee
+  ) {
+    return accumulator + currentEmployee.salary;
+  },
+  0);
+
+  const avgSalary = totalSalary / employeesArray.length;
+  console.log(
+    `The average employee salary between our ${employeesArray.length} employee(s) is $${avgSalary}`
+  );
 };
 
 // Select a random employee
@@ -35,7 +50,9 @@ const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
   const randomIndex = Math.floor(Math.random() * employeesArray.length);
 
-  console.log("Random index ", randomIndex);
+  console.log(
+    `Congratulations to ${employeesArray[randomIndex].firstName} ${employeesArray[randomIndex].lastName}, our random drawing winner!`
+  );
 };
 
 /*
